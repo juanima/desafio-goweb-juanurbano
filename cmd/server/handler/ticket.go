@@ -2,8 +2,7 @@ package handler
 
 import (
 	"net/http"
-
-	"desafio-go-web/internal/tickets"
+	"desafio-goweb-juanurbano/internal/tickets"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,6 +14,12 @@ func NewService(s tickets.Service) *Service {
 	return &Service{
 		service: s,
 	}
+}
+
+func (s *Service) Status() gin.HandlerFunc {
+        return func(c *gin.Context) { 
+                c.String(200, "pong") 
+        }
 }
 
 func (s *Service) GetTicketsByCountry() gin.HandlerFunc {
